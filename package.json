@@ -1,0 +1,47 @@
+{
+  "name": "@railgun-reloaded/merkle-tree",
+  "version": "0.0.0",
+  "description": "Collection of Merkle Tree implementations as used in RAILGUN",
+  "directories": {
+    "test": "test"
+  },
+  "exports": {
+    "./*": "./src/*"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "pretest": "npm run build",
+    "test": "node --enable-source-maps test/merkle-tree.js",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@types/flat-tree": "^1.9.2",
+    "@types/nanoassert": "^2.0.3",
+    "flat-tree": "^1.11.0",
+    "nanoassert": "^2.0.0"
+  },
+  "devDependencies": {
+    "@noble/curves": "^1.4.2",
+    "@noble/hashes": "^1.7.1",
+    "@railgun-reloaded/eslint-config": "^1.1.0",
+    "@railgun-reloaded/tsconfig": "^1.2.0",
+    "@types/brittle": "^3.5.0",
+    "@types/node": "^22.15.29",
+    "brittle": "^3.16.3",
+    "eslint": "^9.24.0",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/railgun-reloaded/merkle-tree.git"
+  },
+  "author": "RAILGUN Project Contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/railgun-reloaded/merkle-tree/issues"
+  },
+  "homepage": "https://github.com/railgun-reloaded/merkle-tree#readme"
+}
