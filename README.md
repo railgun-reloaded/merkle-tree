@@ -5,7 +5,7 @@
 ## Getting Started
 
 ```js
-const { IncrementalMerkleTree } = require('@railgun-reloaded/merkle-tree/sparse-merkle-tree')
+const { SparseMerkleTree } = require('@railgun-reloaded/merkle-tree/sparse-merkle-tree')
 
 const treeDepth = 16
 
@@ -46,7 +46,7 @@ Sparse Merkle Tree implementation with efficient batch inserts. Inherits all met
 
 Create a new Sparse Merkle Tree instance with the given parameters.
 
-### `const tree = SparseMerkleTree.from({ buf, length }, { depth, hashFn })`
+#### `const tree = SparseMerkleTree.from({ buf, length }, { depth, hashFn })`
 
 #### `const len = tree.length`
 
