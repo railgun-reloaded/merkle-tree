@@ -1,7 +1,7 @@
 import { keccak_256 as keccak256 } from '@noble/hashes/sha3'
 import test from 'brittle'
 
-import { SparseMerkleTree } from '../src/sparse-merkle-tree'
+import { IncrementalMerkleTree } from '../src/incremental-merkle-tree'
 
 import { field as Fp } from './babyjub'
 import { hash, u256 } from './helpers'
@@ -29,7 +29,7 @@ const RAILGUN_ZEROS_FIXTURE = [
 ]
 
 test('create - small tree', assert => {
-  const tree = SparseMerkleTree.create({
+  const tree = IncrementalMerkleTree.create({
     depth: RAILGUN_DEPTH,
     hashFn: hash,
     zeroElement: RAILGUN_ZERO
@@ -45,7 +45,7 @@ test('create - small tree', assert => {
 })
 
 test('Fixture - Check against a checkpoint from RAILGUN ethereum', assert => {
-  const tree = SparseMerkleTree.create({
+  const tree = IncrementalMerkleTree.create({
     depth: RAILGUN_DEPTH,
     hashFn: hash,
     zeroElement: RAILGUN_ZERO

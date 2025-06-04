@@ -8,16 +8,16 @@ type ConstructorParams = { length?: number } & MTConstructorParams
 type Serialized = { length: number } & MTSerialized
 
 /**
- * Sparse Merkle Tree implementation. Extends the base Merkle Tree, but provides the convenience of appending nodes at the end of the tree.
+ * Incremental Merkle Tree implementation. Extends the base Merkle Tree, but provides the convenience of appending nodes at the end of the tree.
  */
-class SparseMerkleTree extends MerkleTree {
+class IncrementalMerkleTree extends MerkleTree {
   /**
    * Number of filled leaves in the tree
    */
   readonly length: number
 
   /**
-   * Create a new SparseMerkleTree instance with the given parameters, allocating memory to contain all nodes. Initializes the tree with the zero element. Returns an instance to use
+   * Create a new IncrementalMerkleTree instance with the given parameters, allocating memory to contain all nodes. Initializes the tree with the zero element. Returns an instance to use
    * @param params - Creation parameters
    * @param params.depth - Depth of the tree, excluding the root node. Must be at least 1
    * @param params.hashFn - Hash function to use for internal nodes. Must follow the InplaceMerkleHashFn signature
@@ -25,15 +25,15 @@ class SparseMerkleTree extends MerkleTree {
    * @param params.length - Number of filled leaves in the tree. Defaults to 0
    * @returns Instance of MerkleTree
    */
-  declare static create: (params: CreateParams) => SparseMerkleTree
+  declare static create: (params: CreateParams) => IncrementalMerkleTree
 
   /**
-   * Create a new SparseMerkleTree instance from a serialized object and global parameters
+   * Create a new IncrementalMerkleTree instance from a serialized object and global parameters
    * @param obj Serialized object of the merkle tree
    * @param params Additional system parameters
    * @returns Instance
    */
-  declare static from: (obj: Serialized, params: Omit<ConstructorParams, keyof Serialized>) => SparseMerkleTree
+  declare static from: (obj: Serialized, params: Omit<ConstructorParams, keyof Serialized>) => IncrementalMerkleTree
 
   /**
    * Create a new incremental merkle tree
@@ -60,10 +60,10 @@ class SparseMerkleTree extends MerkleTree {
 
   /**
    * Clone the current tree into an independent instance
-   * @returns Cloned SparseMerkleTree instance
+   * @returns Cloned IncrementalMerkleTree instance
    */
-  override clone (): SparseMerkleTree {
-    return new SparseMerkleTree({
+  override clone (): IncrementalMerkleTree {
+    return new IncrementalMerkleTree({
       ...this.clone(),
       length: this.length
     })
@@ -79,5 +79,5 @@ class SparseMerkleTree extends MerkleTree {
 }
 
 export {
-  SparseMerkleTree, type ConstructorParams, type CreateParams, type Serialized
+  IncrementalMerkleTree, type ConstructorParams, type CreateParams, type Serialized
 }
