@@ -5,7 +5,7 @@
 ## Getting Started
 
 ```js
-const { SparseMerkleTree } = require('@railgun-reloaded/merkle-tree/sparse-merkle-tree')
+const { IncrementalMerkleTree } = require('@railgun-reloaded/merkle-tree/incremental-merkle-tree')
 
 const treeDepth = 16
 
@@ -15,7 +15,7 @@ const hashFn = (out, left, right) => {
   crypto.createHash('sha3-256').update(left).update(right).digest(out)
 }
 
-const tree = SparseMerkleTree.create({ treeDepth, zeroElement, hashFn })
+const tree = IncrementalMerkleTree.create({ treeDepth, zeroElement, hashFn })
 
 // Append three leaves to the tree
 const newLength = tree.append([node1, node2, node3])
@@ -38,15 +38,15 @@ npm install --save @railgun-reloaded/merkle-tree
 
 ## API
 
-### `SparseMerkleTree`
+### `IncrementalMerkleTree`
 
-Sparse Merkle Tree implementation with efficient batch inserts. Inherits all methods from `MerkleTree`.
+Incremental Merkle Tree implementation with efficient batch inserts. Inherits all methods from `MerkleTree`.
 
-#### `const tree = SparseMerkleTree.create({ depth, hashFn, zeroElement, length })`
+#### `const tree = IncrementalMerkleTree.create({ depth, hashFn, zeroElement, length })`
 
-Create a new Sparse Merkle Tree instance with the given parameters.
+Create a new Incremental Merkle Tree instance with the given parameters.
 
-#### `const tree = SparseMerkleTree.from({ buf, length }, { depth, hashFn })`
+#### `const tree = IncrementalMerkleTree.from({ buf, length }, { depth, hashFn })`
 
 #### `const len = tree.length`
 
