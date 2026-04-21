@@ -5,7 +5,7 @@
 ## Getting Started
 
 ```js
-const { SparseMerkleTree } = require('@railgun-reloaded/merkle-tree/sparse-merkle-tree')
+import { SparseMerkleTree } from '@railgun-reloaded/merkle-tree'
 
 const treeDepth = 16
 

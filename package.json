@@ -5,9 +5,8 @@
   "directories": {
     "test": "test"
   },
-  "exports": {
-    "./*": "./src/*"
-  },
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
