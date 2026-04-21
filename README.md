@@ -4,30 +4,30 @@
 
 ## Getting Started
 
-```js
-import { SparseMerkleTree } from '@railgun-reloaded/merkle-tree'
+```ts
+import { SparseMerkleTree } from "@railgun-reloaded/merkle-tree";
 
-const treeDepth = 16
+const treeDepth = 16;
 
-const zeroElement = new Uint8Array(32)
+const zeroElement = new Uint8Array(32);
 
 const hashFn = (out, left, right) => {
-  crypto.createHash('sha3-256').update(left).update(right).digest(out)
-}
+  crypto.createHash("sha3-256").update(left).update(right).digest(out);
+};
 
-const tree = SparseMerkleTree.create({ treeDepth, zeroElement, hashFn })
+const tree = SparseMerkleTree.create({ treeDepth, zeroElement, hashFn });
 
 // Append three leaves to the tree
-const newLength = tree.append([node1, node2, node3])
+const newLength = tree.append([node1, node2, node3]);
 
 // Get the root node of the tree
-const rootNode = tree.root()
+const rootNode = tree.root();
 
 // Generate a proof for the second leaf of the tree
-const proofLeaf1 = tree.proof(1)
+const proofLeaf1 = tree.proof(1);
 
 // Serialize the tree to primitives that can be stored
-const flat = tree.serialize()
+const flat = tree.serialize();
 ```
 
 ## Install
