@@ -1,5 +1,7 @@
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+
 import { keccak_256 as keccak256 } from '@noble/hashes/sha3'
-import test from 'brittle'
 
 import { SparseMerkleTree } from '../src/sparse-merkle-tree'
 
@@ -28,7 +30,7 @@ const RAILGUN_ZEROS_FIXTURE = [
   0x14fceeac99eb8419a2796d1958fc2050d489bf5a3eb170ef16a667060344ba90n // root
 ]
 
-test('create - small tree', assert => {
+test('create - small tree', () => {
   const tree = SparseMerkleTree.create({
     depth: RAILGUN_DEPTH,
     hashFn: hash,
@@ -38,13 +40,13 @@ test('create - small tree', assert => {
   const proof = tree.proof(0)
 
   for (let i = 0; i < proof.pathElements.length; i++) {
-    assert.alike(proof.pathElements[i], u256.toBytes(RAILGUN_ZEROS_FIXTURE.at(i)!), `Internal node at level ${i} is equivalent`)
+    assert.deepEqual(proof.pathElements[i], u256.toBytes(RAILGUN_ZEROS_FIXTURE.at(i)!), `Internal node at level ${i} is equivalent`)
   }
 
-  assert.alike(proof.root, u256.toBytes(RAILGUN_ZEROS_FIXTURE.at(-1)!), 'Roots are equivalent')
+  assert.deepEqual(proof.root, u256.toBytes(RAILGUN_ZEROS_FIXTURE.at(-1)!), 'Roots are equivalent')
 })
 
-test('Fixture - Check against a checkpoint from RAILGUN ethereum', assert => {
+test('Fixture - Check against a checkpoint from RAILGUN ethereum', (t) => {
   const tree = SparseMerkleTree.create({
     depth: RAILGUN_DEPTH,
     hashFn: hash,
@@ -60,8 +62,6 @@ test('Fixture - Check against a checkpoint from RAILGUN ethereum', assert => {
   tree.append(nodes.slice(0, -1))
   const duration = Date.now() - start
 
-  assert.comment(`Append duration: ${duration}ms`)
-  assert.alike(tree.root(), u256.toBytes(0x02854cff26ac9b086f55ef638f22bdc43930921cf8458fdbcb981633e10bf22an), 'Root matches fixture')
-
-  assert.end()
+  t.diagnostic(`Append duration: ${duration}ms`)
+  assert.deepEqual(tree.root(), u256.toBytes(0x02854cff26ac9b086f55ef638f22bdc43930921cf8458fdbcb981633e10bf22an), 'Root matches fixture')
 })
