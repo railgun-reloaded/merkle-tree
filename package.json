@@ -14,7 +14,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "pretest": "npm run build",
-    "test": "node --test --enable-source-maps test/merkle-tree.js",
+    "test": "node --test --enable-source-maps 'test/**/*.test.js'",
     "prepack": "npm run build"
   },
   "dependencies": {
