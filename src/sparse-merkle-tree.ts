@@ -1,7 +1,7 @@
 import assert from 'nanoassert'
 
-import type { ConstructorParams as MTConstructorParams, CreateParams as MTCreateParams, Serialized as MTSerialized } from './merkle-tree'
-import { MerkleTree } from './merkle-tree'
+import type { ConstructorParams as MTConstructorParams, CreateParams as MTCreateParams, Serialized as MTSerialized } from './merkle-tree.js'
+import { MerkleTree } from './merkle-tree.js'
 
 type CreateParams = { length?: number } & MTCreateParams
 type ConstructorParams = { length?: number } & MTConstructorParams

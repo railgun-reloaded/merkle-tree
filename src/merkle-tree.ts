@@ -1,7 +1,7 @@
 import tree from 'flat-tree'
 import assert from 'nanoassert'
 
-import type { InplaceMerkleHashFn, MerkleProof } from './types'
+import type { InplaceMerkleHashFn, MerkleProof } from './types.js'
 
 type CreateParams = { depth: number; hashFn: InplaceMerkleHashFn; zeroElement: Uint8Array }
 type ConstructorParams = { buf: Uint8Array; hashFn: InplaceMerkleHashFn; bytesPerElement: number }

@@ -2,6 +2,7 @@
   "name": "@railgun-reloaded/merkle-tree",
   "version": "0.0.0",
   "description": "Collection of Merkle Tree implementations as used in RAILGUN",
+  "type": "module",
   "directories": {
     "test": "test"
   },

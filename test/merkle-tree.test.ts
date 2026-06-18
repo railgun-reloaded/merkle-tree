@@ -3,10 +3,11 @@ import { test } from 'node:test'
 
 import { keccak_256 as keccak256 } from '@noble/hashes/sha3'
 
-import { SparseMerkleTree } from '../src/sparse-merkle-tree'
+import { SparseMerkleTree } from '../src/sparse-merkle-tree.js'
 
-import { field as Fp } from './babyjub'
-import { hash, u256 } from './helpers'
+import { field as Fp } from './babyjub.js'
+import fixtureTree from './fixture-tree.json' with { type: 'json' }
+import { hash, u256 } from './helpers.js'
 
 const RAILGUN_DEPTH = 16
 const RAILGUN_ZERO = u256.toBytes(Fp.create(Fp.fromBytes(keccak256('Railgun'))))
@@ -53,7 +54,7 @@ test('Fixture - Check against a checkpoint from RAILGUN ethereum', (t) => {
     zeroElement: RAILGUN_ZERO
   })
 
-  const data = require('./fixture-tree.json') as { treePosition: number, hash: string }[][]
+  const data = fixtureTree as { treePosition: number, hash: string }[][]
   const nodes = []
   for (const batch of data) {
     nodes.push(...batch.map(datum => u256.toBytes(BigInt(datum.hash))))

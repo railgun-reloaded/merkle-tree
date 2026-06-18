@@ -1,4 +1,4 @@
-import { poseidonT3 } from './poseidonT3'
+import { poseidonT3 } from './poseidonT3.js'
 
 const u256 = {
   /**
